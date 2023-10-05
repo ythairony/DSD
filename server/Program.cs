@@ -59,17 +59,26 @@ class Program
                   }
               }
               guessedWord = newGuessedWord.ToString();
+              udpBuffer = Encoding.ASCII.GetBytes("Acertou a letra");
+              udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
+
           }
           else
           {
-              Console.WriteLine("Palpite incorreto. Tente novamente.");
               attemptsLeft--;
+              Console.WriteLine("Palpite incorreto. Tente novamente.");
+              udpBuffer = Encoding.ASCII.GetBytes($"Palpite incorreto. Voce tem {attemptsLeft} tentativas.");
+              udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
+              if (attemptsLeft==0) {
+                udpBuffer = Encoding.ASCII.GetBytes($"Voce perdeu, a palavra era => {wordToGuess}");
+                udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
+              }
           }
 
           // Envia o resultado do jogo de volta para o cliente
-          string gameStatus = attemptsLeft == 0 ? "Você perdeu! A palavra era: " + wordToGuess : "Você ganhou!";
-          udpBuffer = Encoding.ASCII.GetBytes(gameStatus);
-          udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
+          // string gameStatus = attemptsLeft == 0 ? "Você perdeu! A palavra era: " + wordToGuess : "Você ganhou!";
+          // udpBuffer = Encoding.ASCII.GetBytes(gameStatus);
+          // udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
         }
 
         // Informa o resultado ao usuário
