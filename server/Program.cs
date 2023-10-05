@@ -59,7 +59,7 @@ class Program
                   }
               }
               guessedWord = newGuessedWord.ToString();
-              udpBuffer = Encoding.ASCII.GetBytes("Acertou a letra");
+              udpBuffer = Encoding.ASCII.GetBytes($"Acertou a letra = {guessedWord}");
               udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
 
           }
@@ -67,7 +67,7 @@ class Program
           {
               attemptsLeft--;
               Console.WriteLine("Palpite incorreto. Tente novamente.");
-              udpBuffer = Encoding.ASCII.GetBytes($"Palpite incorreto. Voce tem {attemptsLeft} tentativas.");
+              udpBuffer = Encoding.ASCII.GetBytes($"Palpite incorreto. Tentativas restantes: {attemptsLeft}");
               udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
               if (attemptsLeft==0) {
                 udpBuffer = Encoding.ASCII.GetBytes($"Voce perdeu, a palavra era => {wordToGuess}");
