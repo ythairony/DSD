@@ -27,14 +27,18 @@ class Program
         // Inicializa o jogo e a palavra a ser adivinhada
         string wordToGuess = "banana";
         string guessedWord = new string('_', wordToGuess.Length);
-        int attemptsLeft = 6;
+        int attemptsLeft = 5;
 
         // Loop principal do jogo
         while (attemptsLeft > 0)
         {
             Console.WriteLine($"Palavra: {guessedWord}, Tentativas Restantes: {attemptsLeft}");
             Console.Write("Faça um palpite (letra ou palavra completa): ");
-            string guess = Console.ReadLine().ToLower();
+
+            // Recebe o palpite do cliente via UDP
+            IPEndPoint udpEndPoint = new IPEndPoint(IPAddress.Any, udpPort);
+            byte[] udpBuffer = udpListener.Receive(ref udpEndPoint);
+            string guess = Encoding.ASCII.GetString(udpBuffer, 0, udpBuffer.Length);
 
             if (guess == wordToGuess)
             {

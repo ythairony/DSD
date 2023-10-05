@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj": {}
+    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj": {}
   },
   "projects": {
-    "c:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj": {
+    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj",
+        "projectUniqueName": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj",
         "projectName": "tarefa2",
-        "projectPath": "c:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj",
+        "projectPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\tarefa2.csproj",
         "packagesPath": "C:\\Users\\yurit\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\obj\\",
+        "outputPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yurit\\AppData\\Roaming\\NuGet\\NuGet.Config"
