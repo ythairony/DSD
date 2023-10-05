@@ -44,6 +44,8 @@ class Program
           {
               guessedWord = wordToGuess;
               Console.WriteLine("Parabéns! Você adivinhou a palavra!");
+              udpBuffer = Encoding.ASCII.GetBytes("Parabens! Voce adivinhou a palavra!");
+              udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
               // Agora você pode reiniciar o jogo ou tomar outra ação, se desejar
               attemptsLeft = 0; // Encerra o loop
           }
