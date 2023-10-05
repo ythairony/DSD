@@ -27,7 +27,7 @@ class Program
         byte[] udpBuffer;
         IPEndPoint udpEndPoint = new IPEndPoint(IPAddress.Loopback, udpPort);
 
-        bool jogoContinua = true;ReadLine
+        bool jogoContinua = true;
 
         while (jogoContinua)
         {
@@ -62,3 +62,21 @@ class Program
         Console.ReadKey();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
