@@ -1,130 +1,73 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace TCPUDPServer
+class Program
 {
-  class Program
-  {
     static void Main(string[] args)
     {
-      TcpListener tcpServer = null;
-      UdpClient   udpServer = null;
-      int         port      = 59567;
+        int tcpPort = 12345; // Porta para conexão TCP
+        int udpPort = 54321; // Porta para conexão UDP
 
-      Console.WriteLine(string.Format("Starting TCP and UDP servers on port {0}...", port));
+        TcpListener tcpListener = new TcpListener(IPAddress.Any, tcpPort);
+        UdpClient udpListener = new UdpClient(udpPort);
 
-      try
-      {
-        udpServer = new UdpClient(port);
-        tcpServer = new TcpListener(IPAddress.Any, port);
+        Console.WriteLine("Servidor do Jogo da Forca iniciado...");
 
-        var udpThread          = new Thread(new ParameterizedThreadStart(UDPServerProc));
-        udpThread.IsBackground = true;
-        udpThread.Name         = "UDP server thread";
-        udpThread.Start(udpServer);
+        // Aceita a conexão TCP para confirmar o nome do usuário
+        tcpListener.Start();
+        TcpClient tcpClient = tcpListener.AcceptTcpClient();
+        NetworkStream tcpStream = tcpClient.GetStream();
+        byte[] tcpBuffer = new byte[1024];
+        int bytesRead = tcpStream.Read(tcpBuffer, 0, tcpBuffer.Length);
+        string username = Encoding.ASCII.GetString(tcpBuffer, 0, bytesRead);
+        Console.WriteLine($"Usuário {username} conectou via TCP.");
 
-        var tcpThread          = new Thread(new ParameterizedThreadStart(TCPServerProc));
-        tcpThread.IsBackground = true;
-        tcpThread.Name         = "TCP server thread";
-        tcpThread.Start(tcpServer);
+        // Inicializa o jogo e a palavra a ser adivinhada
+        string wordToGuess = "banana";
+        string guessedWord = new string('_', wordToGuess.Length);
+        int attemptsLeft = 6;
 
-        Console.WriteLine("Press <ENTER> to stop the servers.");
-        Console.ReadLine();
-      }
-      catch (Exception ex)
-      {
-        Console.WriteLine("Main exception: " + ex);
-      }
-      finally
-      {
-        if (udpServer != null)
-          udpServer.Close();
-
-        if (tcpServer != null)
-          tcpServer.Stop();
-      }
-
-      Console.WriteLine("Press <ENTER> to exit.");
-      Console.ReadLine();
-    }
-
-    private static void UDPServerProc(object arg)
-    {
-      Console.WriteLine("UDP server thread started");
-
-      try
-      {
-        UdpClient server = (UdpClient)arg;
-        IPEndPoint remoteEP;
-        byte[] buffer;
-
-        for(;;)
+        // Loop principal do jogo
+        while (attemptsLeft > 0)
         {
-          remoteEP = null;
-          buffer   = server.Receive(ref remoteEP);
+            Console.WriteLine($"Palavra: {guessedWord}, Tentativas Restantes: {attemptsLeft}");
+            Console.Write("Faça um palpite (letra ou palavra completa): ");
+            string guess = Console.ReadLine().ToLower();
 
-          if (buffer != null && buffer.Length > 0)
-          {
-            Console.WriteLine("UDP: " + Encoding.ASCII.GetString(buffer));
-          }
-        }
-      }
-      catch (SocketException ex)
-      {
-        if(ex.ErrorCode != 10004) // unexpected
-          Console.WriteLine("UDPServerProc exception: " + ex);
-      }
-      catch (Exception ex)
-      {
-        Console.WriteLine("UDPServerProc exception: " + ex);
-      }
-
-      Console.WriteLine("UDP server thread finished");
-    }
-
-    private static void TCPServerProc(object arg)
-    {
-      Console.WriteLine("TCP server thread started");
-
-      try
-      {
-        TcpListener server = (TcpListener)arg;
-        byte[]      buffer = new byte[2048];
-        int         count; 
-
-        server.Start();
-
-        for(;;)
-        {
-          TcpClient client = server.AcceptTcpClient();
-
-          using (var stream = client.GetStream())
-          {
-            while ((count = stream.Read(buffer, 0, buffer.Length)) != 0)
+            if (guess == wordToGuess)
             {
-              Console.WriteLine("TCP: " + Encoding.ASCII.GetString(buffer, 0, count));
+                guessedWord = wordToGuess;
+                Console.WriteLine("Parabéns! Você adivinhou a palavra!");
+                break;
             }
-          }
-          client.Close();
+            else if (guess.Length == 1 && wordToGuess.Contains(guess))
+            {
+                // Atualiza a palavra adivinhada com a letra correta
+                StringBuilder newGuessedWord = new StringBuilder(guessedWord);
+                for (int i = 0; i < wordToGuess.Length; i++)
+                {
+                    if (wordToGuess[i] == guess[0])
+                    {
+                        newGuessedWord[i] = guess[0];
+                    }
+                }
+                guessedWord = newGuessedWord.ToString();
+            }
+            else
+            {
+                Console.WriteLine("Palpite incorreto. Tente novamente.");
+                attemptsLeft--;
+            }
         }
-      }
-      catch (SocketException ex)
-      {
-        if (ex.ErrorCode != 10004) // unexpected
-          Console.WriteLine("TCPServerProc exception: " + ex);
-      }
-      catch (Exception ex)
-      {
-        Console.WriteLine("TCPServerProc exception: " + ex);
-      }
 
-      Console.WriteLine("TCP server thread finished");
+        // Informa o resultado ao usuário
+        Console.WriteLine(attemptsLeft == 0 ? "Você perdeu! A palavra era: " + wordToGuess : "Você ganhou!");
+        tcpClient.Close();
+        udpListener.Close();
+
+        Console.WriteLine("Pressione qualquer tecla para sair...");
+        Console.ReadKey();
     }
-  }
 }

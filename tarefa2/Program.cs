@@ -2,13 +2,13 @@ using System;
 
 class Program {
     static void Main(string[] args) {
-        string palavra = "palavra";
+        string palavra = "PALAVRA";
         string resposta = new string('_', palavra.Length);
         int contadorErros = 0;
 
         while (true) {
             Console.Write("Digite uma letra: ");
-            char letra = char.Parse(Console.ReadLine());
+            char letra = char.Parse(Console.ReadLine().ToUpper());
 
             bool letraEncontrada = false;
 
