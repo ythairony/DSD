@@ -25,8 +25,11 @@ class Program
         }
 
         byte[] udpBuffer;
+        IPEndPoint udpEndPoint = new IPEndPoint(IPAddress.Loopback, udpPort);
 
-        while (true)
+        bool jogoContinua = true;ReadLine
+
+        while (jogoContinua)
         {
             Console.Write("Faça um palpite (letra ou palavra completa): ");
             string guess = Console.ReadLine().ToLower();
@@ -34,12 +37,28 @@ class Program
 
             udpClient.Send(udpBuffer, udpBuffer.Length);
 
-            // Recebe a resposta do servidor
-            IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Any, udpPort);
-            udpBuffer = udpClient.Receive(ref serverEndPoint);
-
+            // Recebe o resultado do servidor via UDP
+            udpBuffer = udpClient.Receive(ref udpEndPoint);
             string gameStatus = Encoding.ASCII.GetString(udpBuffer, 0, udpBuffer.Length);
             Console.WriteLine(gameStatus);
+
+            if (gameStatus.Contains("Parabéns! Você adivinhou a palavra!") || gameStatus.Contains("Você perdeu!"))
+            {
+                Console.WriteLine("Deseja jogar novamente? (S/N)");
+                string resposta = Console.ReadLine().ToLower();
+                if (resposta != "s")
+                {
+                    jogoContinua = false;
+                }
+                else
+                {
+                    // Reinicia o jogo ou qualquer outra ação que você deseje fazer
+                    // (por exemplo, gerar uma nova palavra para adivinhar)
+                }
+            }
         }
+
+        Console.WriteLine("Pressione qualquer tecla para sair...");
+        Console.ReadKey();
     }
 }

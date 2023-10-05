@@ -32,38 +32,44 @@ class Program
         // Loop principal do jogo
         while (attemptsLeft > 0)
         {
-            Console.WriteLine($"Palavra: {guessedWord}, Tentativas Restantes: {attemptsLeft}");
-            Console.Write("Faça um palpite (letra ou palavra completa): ");
+          Console.WriteLine($"Palavra: {guessedWord}, Tentativas Restantes: {attemptsLeft}");
+          Console.Write("Faça um palpite (letra ou palavra completa): ");
 
-            // Recebe o palpite do cliente via UDP
-            IPEndPoint udpEndPoint = new IPEndPoint(IPAddress.Any, udpPort);
-            byte[] udpBuffer = udpListener.Receive(ref udpEndPoint);
-            string guess = Encoding.ASCII.GetString(udpBuffer, 0, udpBuffer.Length);
+          // Recebe o palpite do cliente via UDP
+          IPEndPoint udpEndPoint = new IPEndPoint(IPAddress.Any, udpPort);
+          byte[] udpBuffer = udpListener.Receive(ref udpEndPoint);
+          string guess = Encoding.ASCII.GetString(udpBuffer, 0, udpBuffer.Length);
 
-            if (guess == wordToGuess)
-            {
-                guessedWord = wordToGuess;
-                Console.WriteLine("Parabéns! Você adivinhou a palavra!");
-                break;
-            }
-            else if (guess.Length == 1 && wordToGuess.Contains(guess))
-            {
-                // Atualiza a palavra adivinhada com a letra correta
-                StringBuilder newGuessedWord = new StringBuilder(guessedWord);
-                for (int i = 0; i < wordToGuess.Length; i++)
-                {
-                    if (wordToGuess[i] == guess[0])
-                    {
-                        newGuessedWord[i] = guess[0];
-                    }
-                }
-                guessedWord = newGuessedWord.ToString();
-            }
-            else
-            {
-                Console.WriteLine("Palpite incorreto. Tente novamente.");
-                attemptsLeft--;
-            }
+          if (guess == wordToGuess)
+          {
+              guessedWord = wordToGuess;
+              Console.WriteLine("Parabéns! Você adivinhou a palavra!");
+              // Agora você pode reiniciar o jogo ou tomar outra ação, se desejar
+              attemptsLeft = 0; // Encerra o loop
+          }
+          else if (guess.Length == 1 && wordToGuess.Contains(guess))
+          {
+              // Atualiza a palavra adivinhada com a letra correta
+              StringBuilder newGuessedWord = new StringBuilder(guessedWord);
+              for (int i = 0; i < wordToGuess.Length; i++)
+              {
+                  if (wordToGuess[i] == guess[0])
+                  {
+                      newGuessedWord[i] = guess[0];
+                  }
+              }
+              guessedWord = newGuessedWord.ToString();
+          }
+          else
+          {
+              Console.WriteLine("Palpite incorreto. Tente novamente.");
+              attemptsLeft--;
+          }
+
+          // Envia o resultado do jogo de volta para o cliente
+          string gameStatus = attemptsLeft == 0 ? "Você perdeu! A palavra era: " + wordToGuess : "Você ganhou!";
+          udpBuffer = Encoding.ASCII.GetBytes(gameStatus);
+          udpListener.Send(udpBuffer, udpBuffer.Length, udpEndPoint);
         }
 
         // Informa o resultado ao usuário
