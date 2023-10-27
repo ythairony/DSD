@@ -3,9 +3,11 @@ import Pyro4
 
 
 def main():
-    uri = "PYRO:wordguessgame@localhost:59273"
-    game = Pyro4.Proxy(uri)
-    print("Conectado ao servidor RMI do Jogo da Forca.")
+    try:
+        game = Pyro4.Proxy("PYRONAME:wordguessgame")
+        print("Conectado ao servidor RMI do Jogo da Forca.")
+    except:
+        print("erro :()")
 
     while True:
         guess = input("Faça um palpite (letra ou palavra completa): ")

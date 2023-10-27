@@ -17,9 +17,10 @@ class WordGuessGame:
             for i in range(len(self.word_to_guess)):
                 if self.word_to_guess[i] == guess:
                     self.guessed_word[i] = guess
-            if self.guessed_word == self.word_to_guess:
+            if ''.join(self.guessed_word) == self.word_to_guess:
+                self.guessed_word = ['_'] * len(word)
                 return "Parabéns! Você adivinhou a palavra!"
-            else: return "Você acertou a letra: " + ' '.join(self.guessed_word)
+            else: return "Você acertou a letra: " + ' '+guess + " DEBUG - guessed word = " + ''.join(self.guessed_word)
         else:
             self.attempts_left -= 1
             if self.attempts_left == 0:
@@ -30,11 +31,14 @@ def main():
     # Defina a palavra a ser adivinhada aqui
     word_to_guess = "python"  
     game = WordGuessGame(word_to_guess)
+    #name_server = Pyro4.locateNS()
+    #uri = daemon.register(GreetingMaker)
+    #name_server.register("iury taynori", uri)
     Pyro4.Daemon.serveSimple(
         {
-            game: "wordguessgame"
+            game: "wordguessgame",
         },
-        ns=False
+        ns = True
     )
 
 if __name__ == "__main__":
