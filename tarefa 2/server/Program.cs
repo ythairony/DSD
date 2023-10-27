@@ -25,7 +25,8 @@ class Program
         Console.WriteLine($"Usuário {username} conectou via TCP.");
 
         // Inicializa o jogo e a palavra a ser adivinhada
-        string wordToGuess = "banana";
+        // string wordToGuess = "pneumoultramicroscopicossilicovulcanoconiose";
+        string wordToGuess = "";
         string guessedWord = new string('_', wordToGuess.Length);
         int attemptsLeft = 5;
 
