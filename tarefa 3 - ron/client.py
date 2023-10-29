@@ -1,16 +1,16 @@
 import Pyro4
 
-
-
 def main():
     try:
-        game = Pyro4.Proxy("PYRONAME:wordguessgame")
+        # proxy: interface que intermedia para o objeto real
+        game = Pyro4.Proxy("PYRONAME:wordguessgame") 
         print("Conectado ao servidor RMI do Jogo da Forca.")
     except:
-        print("erro :()")
+        print("erro : algo deu errado XD não conseguimos conectar")
 
-    while True:
+    while True: # laço infinito
         guess = input("Faça um palpite (letra ou palavra completa): ")
+        # o proxy atua como se fosse o próprio objeto
         result = game.guess_word(guess)
         print(result)
 
