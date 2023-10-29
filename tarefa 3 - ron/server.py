@@ -3,48 +3,48 @@ import Pyro4
 @Pyro4.expose
 class WordGuessGame:
     def __init__(self, word):
-        self.word_to_guess = word.lower()
-        self.guessed_word = ['_'] * len(word)
-        self.attempts_left = 5
+        self.palavra = word.lower()
+        self.palavra_montada = ['_'] * len(word)
+        self.tentativas_restantes = 5
 
-    def victory(self):
-        self.guessed_word = ['_'] * len(self.word_to_guess) # reseta as letras adivinhadas
-        self.attempts_left = 5 # reseta as tentativas
+    def vitoria(self):
+        self.palavra_montada = ['_'] * len(self.palavra) # reseta as letras adivinhadas
+        self.tentativas_restantes = 5 # reseta as tentativas restantes
         return "Parabéns! Você adivinhou a palavra!"
 
-    def guess_word(self, guess):
-        guess = guess.lower()
-        # caso o palpite seja a palavra, retorna vitória
-        if guess == self.word_to_guess:
-            return self.victory()
+    def adivinhar(self, palpite):
+        palpite = palpite.lower()
+        
+        if palpite == self.palavra:
+            return self.vitoria()
 
         # caso o palpite esteja na palavra e seja menor que 2
-        if (guess in self.word_to_guess) and (len(guess)<2):
-            for i in range(len(self.word_to_guess)):
+        if (palpite in self.palavra) and (len(palpite)<2):
+            for i in range(len(self.palavra)):
                 # verifica se alguma letra da palavra é o palpite
-                if self.word_to_guess[i] == guess:
-                    self.guessed_word[i] = guess
+                if self.palavra[i] == palpite:
+                    self.palavra_montada[i] = palpite
             # notifica o acerto da palavra ou da letra
-            if (''.join(self.guessed_word) == self.word_to_guess):
-                self.guessed_word = ['_'] * len(self.word_to_guess) # reseta as letras adivinhadas
-                return self.victory()
-            else: return "Você acertou a letra: " + ' '+guess + " DEBUG - guessed word = " + ''.join(self.guessed_word)
+            if (''.join(self.palavra_montada) == self.palavra):
+                self.palavra_montada = ['_'] * len(self.palavra) # reseta as letras adivinhadas
+                return self.vitoria()
+            else: return "Você acertou a letra: " + ' '+palpite + " DEBUG - guessed word = " + ''.join(self.palavra_montada)
         #caso o palpite nem esteja na palavra e sem seja a palavra
         else:
-            self.attempts_left -= 1
-            if self.attempts_left == 0:
-                return f"Você perdeu! A palavra era: {self.word_to_guess}"
-            return f"Palpite incorreto. Tentativas restantes: {self.attempts_left}"
+            self.tentativas_restantes -= 1
+            if self.tentativas_restantes == 0:
+                return f"Você perdeu! A palavra era: {self.palavra}"
+            return f"Palpite incorreto. Tentativas restantes: {self.tentativas_restantes}"
 
 def main():
     # Defina a palavra a ser adivinhada aqui
-    word_to_guess = "python"  
-    game = WordGuessGame(word_to_guess)
+    palavra = "python"  
+    game = WordGuessGame(palavra)
 
     # simplificação para os comandos mais comuns
     Pyro4.Daemon.serveSimple(
         {
-            game: "wordguessgame",
+            game: "jogo_da_forca",
         },
         ns = True # nameserver
     )
