@@ -61,4 +61,29 @@ public class CalcInvestimentos {
     public static string ValorMoradia(double sal) {
         return $"Seu valor com aluguel ou parcela de financiamento deverá ser no máximo {(sal/3).ToString("C")}.";
     }
+
+
+    // [ 4 ] - Monte seu plano de investimento
+	// * Informe o salário
+	// * Informe valor do aluguel/parcela de onde mora
+	// * Informe valor caso receba bonus da empresa (comissões, PLR) de forma anual
+
+	// retorna valor à investir = [
+	// 	{ do seu salário: 10% do salário - custo com moradia },
+	// 	{ do seu bonus: 50% do bônus },
+	// 	{ do seu 13º: 70% do 13º }]
+	// retorna o valor a usar com férias = 1/3 do salário (1/3 de férias) + 30% do 13º
+	// retorna o valor que seus investimentos vão render para o ano seguinte por mês
+
+    public static string PlanoDeInvestimento(double sal, double valorAluguel, double valorBonus) {
+        double valorParaInvestir = ((sal - valorAluguel) * 0.1) * 12;
+        // Somar com 50% dos bonus anuais
+        valorParaInvestir = valorParaInvestir + (valorBonus * 0.5);
+        // Somar com 70% do 13º
+        valorParaInvestir = valorParaInvestir + (sal * 0.7);
+
+        double valorParaFerias = (sal / 3) + (sal * 0.3);
+
+        return $"O valor a ser gasto com suas férias é de {valorParaFerias.ToString("C")}\nValor investido durante o ano será {valorParaInvestir.ToString("C")}\nSeu valor investido renderá {(valorParaInvestir*0.009).ToString("C")} todos os meses no ano seguinte.";
+    }
 }

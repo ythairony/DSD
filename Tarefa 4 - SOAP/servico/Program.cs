@@ -9,6 +9,7 @@ public class Program
         Console.WriteLine(CalcInvestimentos.QueroGanharX(1000, 5));
 
         Console.WriteLine(CalcInvestimentos.ValorMoradia(20000));
+        Console.WriteLine(CalcInvestimentos.PlanoDeInvestimento(1200, 200, 10000));
 
     }
 }
