@@ -52,4 +52,13 @@ public class CalcInvestimentos {
         // retorna o montante acumulado no final
         return montanteFinal;
     }
+
+
+    // [ 3 ] - Quando devo gastar com moradia
+	// * Informa o valor do salário
+	// retorna o valor sugerido de preço que deve pagar de aluguel/financiamento
+
+    public static string ValorMoradia(double sal) {
+        return $"Seu valor com aluguel ou parcela de financiamento deverá ser no máximo {(sal/3).ToString("C")}.";
+    }
 }
