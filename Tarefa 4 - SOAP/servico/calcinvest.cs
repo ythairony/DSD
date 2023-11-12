@@ -4,8 +4,6 @@ public class CalcInvestimentos {
     // 	* Informa em quanto tempo
     // 	retorna valor que deve ser investido por mês 
 
-    // TUDO DA DANDO CONTA TRONXA 
-
     public static double QueroGanharX(double valor, int anos) {
         // taxa mes de 0,9%
         double taxaMes = 0.009;
