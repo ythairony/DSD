@@ -1,0 +1,15 @@
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.csproj.AssemblyReference.cache
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.AssemblyInfoInputs.cache
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.AssemblyInfo.cs
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.csproj.CoreCompileInputs.cache
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\bin\Debug\net7.0\servico.exe
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\bin\Debug\net7.0\servico.deps.json
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\bin\Debug\net7.0\servico.runtimeconfig.json
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\bin\Debug\net7.0\servico.dll
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\bin\Debug\net7.0\servico.pdb
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.dll
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\refint\servico.dll
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.pdb
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\servico.genruntimeconfig.cache
+C:\Users\yurit\OneDrive\Documentos\IFRN\período 4\DSD\Implementações\DSD\Tarefa 4 - SOAP\servico\obj\Debug\net7.0\ref\servico.dll

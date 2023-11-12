@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa 2\\tarefa2\\tarefa2.csproj": {}
+    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 2 - TCP_UDP\\tarefa2\\tarefa2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa 2\\tarefa2\\tarefa2.csproj": {
+    "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 2 - TCP_UDP\\tarefa2\\tarefa2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa 2\\tarefa2\\tarefa2.csproj",
+        "projectUniqueName": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 2 - TCP_UDP\\tarefa2\\tarefa2.csproj",
         "projectName": "tarefa2",
-        "projectPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa 2\\tarefa2\\tarefa2.csproj",
+        "projectPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 2 - TCP_UDP\\tarefa2\\tarefa2.csproj",
         "packagesPath": "C:\\Users\\yurit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Tarefa 2\\DSD\\tarefa 2\\tarefa2\\obj\\",
+        "outputPath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 2 - TCP_UDP\\tarefa2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yurit\\AppData\\Roaming\\NuGet\\NuGet.Config"
