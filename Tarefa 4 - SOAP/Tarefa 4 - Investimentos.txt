@@ -1,0 +1,27 @@
+Planejamento de investimentos
+
+[ 1 ] - Quero ganhar X por mês
+	* Informa quanto quer ganhar
+	* Informa em quanto tempo
+	retorna valor que deve ser investido por mês 
+
+[ 2 ] - Quero investir
+	* Informa quanto tem disponível para investir por mês
+	* Informa quando tempo vai investir
+	retorna renda que terá mensalmente ao término do prazo, o valor total investido e o valor que foi acumulado
+
+[ 3 ] - Quando devo gastar com moradia
+	* Informa o valor do salário
+	retorna o valor sugerido de preço que deve pagar de aluguel/financiamento
+
+[ 4 ] - Monte seu plano de investimento
+	* Informe o salário
+	* Informe valor do aluguel/parcela de onde mora
+	* Informe valor caso receba bonus da empresa (comissões, PLR) de forma anual
+
+	retorna valor à investir = [
+		{ do seu salário: 10% do salário - custo com moradia },
+		{ do seu bonus: 50% do bônus },
+		{ do seu 13º: 70% do 13º }]
+	retorna o valor a usar com férias = 1/3 do salário (1/3 de férias) + 30% do 13º
+	retorna o valor que seus investimentos vão render para o ano seguinte por mês
