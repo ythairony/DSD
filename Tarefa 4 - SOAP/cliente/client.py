@@ -1,17 +1,44 @@
 from zeep import Client
 
-# Substitua pela URL real do seu serviço
-url_servico = 'http://localhost/CalcInvestimentos.asmx?wsdl'
-cliente = Client(url_servico)
+class Livro:
+    pass
 
-# Chame os métodos SOAP
-resultado_quero_ganhar_x = cliente.service.QueroGanharX(valor=1000, anos=5)
-resultado_quero_investir = cliente.service.QueroInvestir(valor=1000, anos=5)
-resultado_valor_moradia = cliente.service.ValorMoradia(sal=5000)
-resultado_plano_investimento = cliente.service.PlanoDeInvestimento(sal=50000, valorAluguel=1000, valorBonus=5000)
+def novoLivro():
+    ret = Livro()
+    ret.nome = input('Digite o nome do livro: ')
+    return ret
 
-# Processe os resultados conforme necessário
-print(resultado_quero_ganhar_x)
-print(resultado_quero_investir)
-print(resultado_valor_moradia)
-print(resultado_plano_investimento)
+def main():
+    client = Client('http://127.0.0.1:5000/biblioteca?wsdl')
+    print('### QAjuda Investimentos')
+    while True:
+        print('\nMENU:')
+        print('[ 1 ] Quero Ganhar X por mês')
+        print('[ 2 ] Quero Investir X por mês')
+        print('[ 3 ] Quanto devo gastar com moradia')
+        print('[ 4 ] Plano de investimento')
+        print('[ 0 ] Sair')
+        op = input('> ')
+        if op == '1':
+            livro = novoLivro()
+            client.service.adicionarLivro(
+                livro.nome
+            )
+        elif op == '2':
+            ls = client.service.listarLivros()
+            for livro in ls:
+                print('')
+                print('Nome do livro: ', livro.nome)
+        elif op == '3':           
+            la = input(f'Nome do livro antigo: ${livro.nome}')
+            ln = input(f'\nNome do livro novo: ${livro.nome}')
+            ls = client.service.atualizarLivro(la,ln)
+        elif op == '4':
+            pass
+        elif op == '0':
+            break
+        else:
+            print('[ --Opcao inválida!-- ]')
+
+if __name__ == '__main__':
+    main()
