@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "kz9a0paGcU0kYai1qebUNVn//Uqpiu+zpGRHdn/mwiwDhLMG8WoTLEVu6BoFLem07hRtA0AtKmVsht6/gD49PQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yurit\\OneDrive\\Documentos\\IFRN\\período 4\\DSD\\Implementações\\DSD\\Tarefa 4 - SOAP\\QAjudaFinancas\\QAjudaFinancas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yurit\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.20\\microsoft.aspnetcore.jsonpatch.3.1.20.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.20\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.20.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.private.servicemodel\\4.7.0\\system.private.servicemodel.4.7.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.reflection.dispatchproxy\\4.5.0\\system.reflection.dispatchproxy.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.cryptography.pkcs\\4.5.0\\system.security.cryptography.pkcs.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.cryptography.xml\\4.5.0\\system.security.cryptography.xml.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.permissions\\4.5.0\\system.security.permissions.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.servicemodel.http\\4.7.0\\system.servicemodel.http.4.7.0.nupkg.sha512",
+    "C:\\Users\\yurit\\.nuget\\packages\\system.servicemodel.primitives\\4.7.0\\system.servicemodel.primitives.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
