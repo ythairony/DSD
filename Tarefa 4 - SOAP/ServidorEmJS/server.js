@@ -7,7 +7,7 @@ const WSDL_DEFINITION = require("fs").readFileSync(WSDL_PATH, "utf8")
 const servico = {
     QAjuda_servico: {
         porta: {
-            
+             
         }
     }
 }
