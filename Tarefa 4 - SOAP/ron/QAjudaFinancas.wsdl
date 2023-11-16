@@ -1,0 +1,58 @@
+<!--
+ 
+(c) World Corp
+2023-11-16
+let you post/retrieve online message by SOAP protocol
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+ 
+-->
+<definitions name="let you post/retrieve online message by SOAP protocol" targetNamespace="us.world_corp.my_soap_forum.wsdl">
+<!-- definition of datatypes -->
+<types>
+<schema targetNamespace="us.world_corp.my_soap_forum.xsd">
+<element name="number">
+<complexType>
+<all>
+<element name="value" type="int"/>
+</all>
+</complexType>
+</element>
+</schema>
+</types>
+<!-- response messages -->
+<message name="returns_number">
+<part name="number" type="xsd:number"/>
+</message>
+<!-- request messages -->
+<message name="vezesDois">
+<part name="number" type="xsd:number"/>
+</message>
+<!-- server's services -->
+<portType name="my SOAP forum">
+<operation name="vezesDois">
+<input message="tns:vezesDois"/>
+<output message="tns:returns_number"/>
+</operation>
+</portType>
+<!-- server encoding -->
+<binding name="my SOAP forum_webservices" type="tns:my SOAP forum">
+<soap:binding name="qajuda" style="rpc"/>
+<operation name="vezesDois">
+<soap:operation soapAction="urn:xmethods-delayed-quotes#vezesDois"/>
+<input>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+</output>
+</operation>
+</binding>
+<!-- access to service provider -->
+<service name="exemple">
+<port name="exemple_0" binding="my SOAP forum_webservices">
+<soap:address location="http://127.0.0.1./qajuda"/>
+</port>
+</service>
+</definitions>
