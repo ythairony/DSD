@@ -1,0 +1,54 @@
+<definitions name = "contabilidade"
+   targetNamespace = "http:127.0.0.1.com/contabilidade/contabilidade.wsdl"
+   xmlns = "http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:tns = "http:127.0.0.1.com/tarot/TarotService.wsdl"
+   xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+
+   <message name = "TarotRequest">
+      <part name = "past" type = "xsd:boolean"/>
+      <part name = "present" type = "xsd:boolean"/>
+      <part name = "future" type = "xsd:boolean"/>
+      <part name = "all" type = "xsd:boolean"/>
+   </message>
+
+   <message name = "TarotResponse">
+      <part name = "greeting" type = "xsd:string"/>
+   </message>
+
+   <portType name = "Tarot_PortType">
+      <operation name = "shuffleAndDeliverCards">
+         <input message = "tns:TarotRequest"/>
+         <output message = "tns:TarotResponse"/>
+      </operation>
+   </portType>
+
+   <binding name = "Tarot_Binding" type = "tns:Tarot_PortType">
+      <soap:binding style = "rpc"
+         transport = "http://schemas.xmlsoap.org/soap/http"/>
+      <operation name = "shuffleAndDeliverCards">
+         <soap:operation soapAction = "shuffleAndDeliverCards"/>
+         <input>
+            <soap:body
+               encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+               namespace = "urn:examples:tarotservice"
+               use = "encoded"/>
+         </input>
+
+         <output>
+            <soap:body
+               encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+               namespace = "urn:examples:tarotservice"
+               use = "encoded"/>
+         </output>
+      </operation>
+   </binding>
+
+   <service name = "Tarot_Service">
+      <documentation>WSDL File for TarotService</documentation>
+      <port binding = "tns:Tarot_Binding" name = "Tarot_Port">
+         <soap:address
+            location = "http:127.0.0.1.com/tarot" />
+      </port>
+   </service>
+</definitions>
