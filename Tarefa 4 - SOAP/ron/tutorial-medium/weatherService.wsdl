@@ -1,6 +1,6 @@
 <definitions name="WeatherService"
-  targetNamespace="http://example.com/weather"
-  xmlns:tns="http://example.com/weather"
+  targetNamespace="http://localhost:8000/weather?wsdl"
+  xmlns:tns="http://localhost:8000/weather?wsdl"
   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 

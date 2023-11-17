@@ -1,0 +1,54 @@
+<definitions name="CalculatorService"
+  targetNamespace="http://example.com/calculator"
+  xmlns:tns="http://example.com/calculator"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <types>
+    <xsd:schema>
+      <xsd:element name="performOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="num1" type="xsd:float"/>
+            <xsd:element name="num2" type="xsd:float"/>
+            <xsd:element name="operation" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+
+  <message name="performOperationRequest">
+    <part name="parameters" element="tns:performOperation"/>
+  </message>
+
+  <message name="performOperationResponse">
+    <part name="result" type="xsd:float"/>
+  </message>
+
+  <portType name="CalculatorPortType">
+    <operation name="performOperation">
+      <input message="tns:performOperationRequest"/>
+      <output message="tns:performOperationResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="CalculatorBinding" type="tns:CalculatorPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="performOperation">
+      <soap:operation soapAction="http://example.com/calculator/performOperation"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="CalculatorService">
+    <port name="CalculatorPort" binding="tns:CalculatorBinding">
+      <soap:address location="http://localhost:8000/calculator"/>
+    </port>
+  </service>
+</definitions>

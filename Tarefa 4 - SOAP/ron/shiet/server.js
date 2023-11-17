@@ -16,18 +16,21 @@ const service = {
               (_, i, ar) => Math.random() < 1 / (ar.length - i)
             )["name"],
           };
+
         } else if (args.present.toLowerCase() === "true") {
           return {
             greeting: arrayOfCards.find(
               (_, i, ar) => Math.random() < 1 / (ar.length - i)
             )["name"],
           };
+
         } else if (args.future.toLowerCase() === "true") {
           return {
             greeting: arrayOfCards.find(
               (_, i, ar) => Math.random() < 1 / (ar.length - i)
             )["name"],
           };
+          
         } else if (args.all.toLowerCase() === "true") {
           let cards = [];
 
