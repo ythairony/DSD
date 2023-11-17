@@ -1,7 +1,7 @@
 const soap = require("soap")
 const http = require("http")
 
-const WSDL_PATH = "QAjudaFinancas.wsdl"
+const WSDL_PATH = "gpt.wsdl"
 const WSDL_DEFINITION = require("fs").readFileSync(WSDL_PATH, "utf8")
 
 const servico = {
