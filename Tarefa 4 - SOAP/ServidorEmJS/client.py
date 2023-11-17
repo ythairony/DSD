@@ -38,7 +38,7 @@ def main():
             sal = float(input('Digite o valor do salário: '))
             valor_aluguel = float(input('Digite o valor do aluguel: '))
             valor_bonus = float(input('Digite o valor do bônus: '))
-            result_plano_investimento = client_js.service.PlanoDeInvestimento(sal=sal, valorAluguel=valor_aluguel, valorBonus=valor_bonus)
+            result_plano_investimento = client_js.service.QAjudaService.QAjudaPort.PlanoDeInvestimento(sal=sal, valorAluguel=valor_aluguel, valorBonus=valor_bonus)
             plano = result_plano_investimento.plano
             print(f"Valor para férias: {plano['valorParaFerias']}")
             print(f"Valor investido durante o ano: {plano['valorInvestidoAno']}")

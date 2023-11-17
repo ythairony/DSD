@@ -30,14 +30,24 @@ const calcInvestimentos = {
         return `Seu valor com aluguel ou parcela de financiamento deverá ser no máximo ${(sal / 3).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}.`;
     },
 
-    PlanoDeInvestimento: function (sal, valorAluguel, valorBonus) {
+    PlanoDeInvestimento: function (args, callback) {
+        const sal = args.sal;
+        const valorAluguel = args.valorAluguel;
+        const valorBonus = args.valorBonus;
+
         let valorParaInvestir = (sal - valorAluguel) * 0.1 * 12;
         valorParaInvestir += valorBonus * 0.5;
         valorParaInvestir += sal * 0.7;
 
         const valorParaFerias = (sal / 3) + sal * 0.3;
 
-        return `O valor a ser gasto com suas férias é de ${valorParaFerias.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\nValor investido durante o ano será ${valorParaInvestir.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\nSeu valor investido renderá ${(valorParaInvestir * 0.009).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} todos os meses no ano seguinte.`;
+        const plano = {
+            valorParaFerias: valorParaFerias.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            valorInvestidoAno: valorParaInvestir.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            rendimentoMensal: (valorParaInvestir * 0.009).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        };
+
+        callback(null, { plano });
     }
 };
 

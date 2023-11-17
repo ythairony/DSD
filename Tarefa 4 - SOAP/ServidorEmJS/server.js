@@ -5,19 +5,25 @@ const servico = {
     QAjuda_servico: {
         porta: {
             QueroGanharX: function (args, callback) {
-                const valor = args.valor;
-                const anos = args.anos;
+                try {
+                    const valor = args.valor;
+                    const anos = args.anos;
 
-                const taxaMes = 0.009;
-                const montanteEstimando = valor / taxaMes;
-                const taxaAnual = Math.pow(1 + taxaMes, 12) - 1;
-                const taxaReal = taxaAnual / 12;
+                    const taxaMes = 0.009;
+                    const montanteEstimando = valor / taxaMes;
+                    const taxaAnual = Math.pow(1 + taxaMes, 12) - 1;
+                    const taxaReal = taxaAnual / 12;
 
-                const investimentoMensal =
-                    (montanteEstimando / ((Math.pow(1 + taxaReal, anos * 12) - 1) / taxaReal)) *
-                    Math.pow(1 + taxaReal, 1);
+                    const investimentoMensal =
+                        (montanteEstimando / ((Math.pow(1 + taxaReal, anos * 12) - 1) / taxaReal)) *
+                        Math.pow(1 + taxaReal, 1);
 
-                callback(null, { investimentoMensal });
+                    callback(null, { investimentoMensal });
+                } catch (error) {
+                    console.error(error);
+                    callback({ Fault: { Code: { Value: 'soap:Receiver' }, Reason: { Text: 'Internal Server Error' } } });
+                }
+
             },
             QueroInvestir: function (args, callback) {
                 const valor = args.valor;
@@ -43,19 +49,19 @@ const servico = {
                 const sal = args.sal;
                 const valorAluguel = args.valorAluguel;
                 const valorBonus = args.valorBonus;
-
+            
                 let valorParaInvestir = (sal - valorAluguel) * 0.1 * 12;
                 valorParaInvestir += valorBonus * 0.5;
                 valorParaInvestir += sal * 0.7;
-
+            
                 const valorParaFerias = (sal / 3) + sal * 0.3;
-
+            
                 const plano = {
                     valorParaFerias: valorParaFerias.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
                     valorInvestidoAno: valorParaInvestir.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
                     rendimentoMensal: (valorParaInvestir * 0.009).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                 };
-
+            
                 callback(null, { plano });
             }
         }
