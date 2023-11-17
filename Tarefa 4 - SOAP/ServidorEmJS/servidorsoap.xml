@@ -1,0 +1,48 @@
+<definitions
+    name="QAjuda_servico"
+    targetNamespace="http://example.com/QAjuda_servico"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+    <types>
+        <!-- Defina seus tipos de dados aqui -->
+    </types>
+
+    <message name="QueroGanharXInput">
+        <part name="valor" type="xsd:double" />
+        <part name="anos" type="xsd:int" />
+    </message>
+
+    <message name="QueroGanharXOutput">
+        <part name="investimentoMensal" type="xsd:double" />
+    </message>
+
+    <!-- Adicione outras mensagens e operações aqui -->
+
+    <portType name="QAjudaPortType">
+        <operation name="QueroGanharX">
+            <input message="tns:QueroGanharXInput" />
+            <output message="tns:QueroGanharXOutput" />
+        </operation>
+        <!-- Adicione outras operações aqui -->
+    </portType>
+
+    <binding name="QAjudaBinding" type="tns:QAjudaPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="QueroGanharX">
+            <soap:operation soapAction="http://example.com/QueroGanharX" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <!-- Adicione outras operações aqui -->
+    </binding>
+
+    <service name="QAjudaService">
+        <port name="QAjudaPort" binding="tns:QAjudaBinding">
+            <soap:address location="http://localhost:8000/QAjuda" />
+        </port>
+    </service>
+</definitions>
