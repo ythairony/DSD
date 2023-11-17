@@ -67,6 +67,9 @@ const xml = `
     name="QAjuda_servico"
     targetNamespace="http://example.com/QAjuda_servico"
     xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://example.com/QAjuda_servico"
 >
     <types>
         <!-- Defina seus tipos de dados aqui -->
@@ -111,6 +114,7 @@ const xml = `
         </port>
     </service>
 </definitions>
+
 `;
 
 const servidor = http.createServer(function (req, res) {
