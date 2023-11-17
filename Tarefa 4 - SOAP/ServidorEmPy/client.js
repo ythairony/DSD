@@ -2,7 +2,7 @@ const soap = require('soap');
 const readline = require('readline');
 const { stringify } = require('querystring');
 
-const url = 'http://127.0.0.1:8000/?wsdl';
+const url = 'http://10.24.24.9:8000/?wsdl';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -17,7 +17,7 @@ function queroGanharX(client) {
           console.error('Erro:', err);
           return;
         }
-        console.log('Resultado QueroGanharX:', result.investimentoMensal);
+        console.log('Resultado QueroGanharX:', result);
         menu(client);
       });
     });

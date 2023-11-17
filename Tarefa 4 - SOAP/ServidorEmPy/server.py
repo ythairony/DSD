@@ -6,6 +6,9 @@ from wsgiref.simple_server import make_server
 class QAjudaService(ServiceBase):
     @rpc(Unicode, Unicode, _returns=Unicode)
     def QueroGanharX(self, valor, anos):
+        valor = float(valor)
+        anos = float(anos)
+
         taxa_mes = 0.009
 
         montante_estimado = valor / taxa_mes
@@ -18,7 +21,7 @@ class QAjudaService(ServiceBase):
 
         total_investido = investimento_mensal * (anos * 12)
 
-        return str(investimento_mensal)
+        return f"Terá que investir {investimento_mensal:.2f} por mês paraa atingir a renda de {total_investido:.2f}"
 
 
     @rpc(Unicode, Unicode, _returns=Unicode)
@@ -66,7 +69,9 @@ if __name__ == '__main__':
     application = Application([QAjudaService], 'qajudaservice.soap', in_protocol=Soap11(validator='lxml'), out_protocol=Soap11())
     wsgi_application = WsgiApplication(application)
 
-    server = make_server('127.0.0.1', 8000, wsgi_application)
+    # server = make_server('127.0.0.1', 8000, wsgi_application)
+    server = make_server('10.24.24.9', 8000, wsgi_application)
 
-    print("Servidor SOAP rodando em http://127.0.0.1:8000")
+    # print("Servidor SOAP rodando em http://127.0.0.1:8000")
+    print("Servidor SOAP rodando em http://10.24.24.9:8000")
     server.serve_forever()
