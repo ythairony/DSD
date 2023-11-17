@@ -32,7 +32,7 @@ function queroInvestir(client) {
           console.error('Erro:', err);
           return;
         }
-        console.log('Resultado QueroInvestir:', result.montanteFinal);
+        console.log('Resultado QueroInvestir:', result);
         menu(client);
       });
     });
@@ -46,7 +46,7 @@ function valorMoradia(client) {
         console.error('Erro:', err);
         return;
       }
-      console.log('Resultado ValorMoradia:', result.mensagem);
+      console.log(result);
       menu(client);
     });
   });

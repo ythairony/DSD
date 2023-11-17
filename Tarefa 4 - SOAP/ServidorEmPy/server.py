@@ -23,16 +23,21 @@ class QAjudaService(ServiceBase):
 
     @rpc(Unicode, Unicode, _returns=Unicode)
     def QueroInvestir(self, valor, anos):
-        taxa_mes = 0.009
-        taxa_anual = ((1 + taxa_mes) ** 12) - 1
-        taxa_real = taxa_anual / 12
+        try:
+            valor = float(valor)
+            anos = float(anos)
+            taxa_mes = 0.009
+            taxa_anual = ((1 + taxa_mes) ** 12) - 1
+            taxa_real = taxa_anual / 12
 
-        montante_final = valor * (((1 + taxa_real) ** (anos * 12) - 1) / taxa_real) * (1 + taxa_real)
+            montante_final = valor * (((1 + taxa_real) ** (anos * 12) - 1) / taxa_real) * (1 + taxa_real)
 
-        total_investido = valor * (anos * 12)
-        renda_passiva = montante_final * taxa_mes
+            total_investido = valor * (anos * 12)
+            renda_passiva = montante_final * taxa_mes
 
-        return montante_final
+            return f"Seu investimento após {anos} anos será de: {total_investido:.2f}, seu patrímonio acumulado será: {montante_final:.2f} e seu renda passiva será: {renda_passiva:.2f}"
+        except ValueError:
+            return "Os valores fornecidos não são números válidos."
 
     @rpc(Unicode, _returns=Unicode)
     def ValorMoradia(self, sal):
