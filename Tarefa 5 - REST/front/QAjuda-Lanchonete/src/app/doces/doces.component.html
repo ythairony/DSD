@@ -1,0 +1,19 @@
+<section class="container">
+    <section class="container">
+        <div><h2>Cardápio de Doces</h2></div>
+        <table class="table table-striped mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Valor</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of itens">
+            <tr>
+              <td>{{ item.item }}</td>
+              <td>{{ item.valor }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+</section>
