@@ -2,3 +2,32 @@ h2 {
     margin: 20px;
     text-align: center;
 }
+
+table, th, td {
+    border: 1px solid black;
+    }
+    
+    table {
+    border-collapse: collapse;
+    margin: auto;
+    }
+    
+    th, td{
+    padding: 10px;
+    text-align: center;
+    width: 400px;
+    }
+    
+    th{
+    font-weight: bold;
+    }
+    
+    
+    tr:nth-child(even) {
+    background-color: #3F8CF6;
+    }
+    
+    tr:hover:nth-child(1n + 2) {
+    background-color: black;
+    color: #fff;
+    }

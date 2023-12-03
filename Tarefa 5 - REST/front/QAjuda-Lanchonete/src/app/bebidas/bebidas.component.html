@@ -1,4 +1,4 @@
-<section class="container">
+<!-- <section class="container">
     <section class="container">
         <div><h2>Cardápio de Bebidas</h2></div>
         <table class="table table-striped mt-4">
@@ -16,4 +16,21 @@
           </tbody>
         </table>
       </section>
+</section> -->
+
+<section class="container">
+  <div>
+    <h2>Cardápio de Bebidas</h2>
+  </div>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Valor</th>
+    </tr>
+
+    <tr *ngFor="let item of itens">
+      <td>{{ item.item }}</td>
+      <td>{{ item.valor }}</td>
+    </tr>
+  </table>
 </section>
